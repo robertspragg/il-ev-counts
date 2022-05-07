@@ -14,17 +14,17 @@ SOS_EV_URL = 'https://www.ilsos.gov/departments/vehicles/statistics/electric/202
 # TODO: add linting
 
 cwd = os.getcwd()
-pdf_data = SOS_EV_URL.split('/')[-1]
+update_date = SOS_EV_URL.split('/')[-1].split('.')[0]
 
 # download PDF from Secretary of state website
 response = requests.get(SOS_EV_URL)
-open(f"{cwd}/data/{SOS_EV_URL.split('/')[-1]}", "wb").write(response.content)
+open(f"{cwd}/data/{update_date}.pdf", "wb").write(response.content)
 
 # extract EV counts by ZIP code
-pdf = pdfplumber.open(cwd + f'/data/{pdf_data}')
-ev_df = pd.DataFrame(columns=['municipality', 'zip_code', 'ev_count'])
+pdf = pdfplumber.open(cwd + f'/data/{update_date}.pdf')
 
 # parse pages with uniform layout - skipping first page
+ev_df = pd.DataFrame(columns=['municipality', 'zip_code', 'ev_count'])
 for page in pdf.pages[1:]:
     text = page.extract_text()
     lines = text.split('\n')
@@ -47,4 +47,4 @@ ev_df['ev_count'] = ev_df['ev_count'].astype(int)
 if ev_df['ev_count'].sum() != int(total_ev_count):
     LOGGER.warning(f"Derived EV count of {ev_df['ev_count'].sum()} does not match provided total of {total_ev_count}")
 
-ev_df.to_csv(cwd + '/data/ev_counts_by_zipcode.csv', index=False)
+ev_df.to_csv(cwd + f'/data/ev_counts_{update_date}.csv', index=False)
