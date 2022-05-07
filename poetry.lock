@@ -111,14 +111,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
-name = "pycurl"
-version = "7.45.1"
-description = "PycURL -- A Python Interface To The cURL library"
-category = "main"
-optional = false
-python-versions = ">=3.5"
-
-[[package]]
 name = "python-dateutil"
 version = "2.8.2"
 description = "Extensions to the standard Python datetime module"
@@ -160,7 +152,7 @@ test = ["pytest (>=5.3.5)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "~3.9"
-content-hash = "c0da8e694f37455e9e2a40e08c6186554ec64a89de6d7e03cc4d3f1e7c8926f9"
+content-hash = "d85de254b490489317d65cec031af45b23823ad1453b1aaee5b51ced4d2064b9"
 
 [metadata.files]
 cffi = [
@@ -347,9 +339,6 @@ pillow = [
 pycparser = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
     {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
-]
-pycurl = [
-    {file = "pycurl-7.45.1.tar.gz", hash = "sha256:a863ad18ff478f5545924057887cdae422e1b2746e41674615f687498ea5b88a"},
 ]
 python-dateutil = [
     {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
