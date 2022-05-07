@@ -11,8 +11,6 @@ import logging
 LOGGER = logging.getLogger()
 SOS_EV_URL = 'https://www.ilsos.gov/departments/vehicles/statistics/electric/2022/electric041522.pdf'
 
-# TODO: add linting
-
 cwd = os.getcwd()
 update_date = SOS_EV_URL.split('/')[-1].split('.')[0]
 
