@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "il-ev-counts"
+version = "0.1.0"
+description = "Used to download EV registration totals, convert to csv, and analyze"
+authors = ["Robert Spragg"]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+pandas = "~1.2"
+numpy = "~1.21"
+pycurl = "^7.45.1"
+pdfplumber = "^0.6.2"
