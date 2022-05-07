@@ -2,25 +2,23 @@
 parses data, and saves ZIP-code level EV data
 """
 import os
-
 import pandas as pd
-from io import BytesIO
+import requests
 import pdfplumber
 import re
 import logging
 
 LOGGER = logging.getLogger()
-SOS_EV_FILE = 'https://www.ilsos.gov/departments/vehicles/statistics/electric/home.html'
-
-# TODO: download and save to data directory
-# buffer = BytesIO()
-# c = pycurl.Curl()
-# c.setopt(c.URL, SOS_DIR)
+SOS_EV_URL = 'https://www.ilsos.gov/departments/vehicles/statistics/electric/2022/electric041522.pdf'
 
 # TODO: add linting
 
 cwd = os.getcwd()
-pdf_data = 'electric041522.pdf'
+pdf_data = SOS_EV_URL.split('/')[-1]
+
+# download PDF from Secretary of state website
+response = requests.get(SOS_EV_URL)
+open(f"{cwd}/data/{SOS_EV_URL.split('/')[-1]}", "wb").write(response.content)
 
 # extract EV counts by ZIP code
 pdf = pdfplumber.open(cwd + f'/data/{pdf_data}')
