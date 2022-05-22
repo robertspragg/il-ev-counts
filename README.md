@@ -11,5 +11,5 @@ Prerequisites
 - to enable poetry environment by running `poetry env use python 3.9`
 
 To run code:
-- `python3 query_registration_data.py <URL>`
+- `python3 query_clean_registration_data.py <URL>`
 - example URL: https://www.ilsos.gov/departments/vehicles/statistics/electric/2022/electric011522.pdf
