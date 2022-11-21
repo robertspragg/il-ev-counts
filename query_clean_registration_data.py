@@ -14,7 +14,9 @@ import logging
 
 def download_ev_data(url: str, filename: str):
     # download and save PDF from Secretary of state website
-    response = requests.get(url)
+    headers = {'user-agent': 'agent-string'}
+    response = requests.get(url, timeout=5, stream=True,
+                            headers=headers)
     open(f"{cwd}/data/{filename}.pdf", "wb").write(response.content)
 
 
@@ -58,6 +60,9 @@ if __name__ == "__main__":
     ev_data_url = sys.argv[1]
     cwd = os.getcwd()
     file = ev_data_url.split('/')[-1].split('.')[0]
-    download_ev_data(ev_data_url, filename=file)
+
+    download_ev_data(url=ev_data_url, filename=file)
+    LOGGER.info('Successfully downloaded EV registration PDF from IL SOS')
+
     convert_ev_data(filename=file)
     LOGGER.info('Successfully converted EV registration PDF to CSV.')
